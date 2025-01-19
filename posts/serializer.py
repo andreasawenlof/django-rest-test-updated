@@ -11,6 +11,21 @@ class PostSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
+    def validate_iamge(self, value):
+        if value.size > 1024 * 1024 * 2:
+            raise serializers.ValidationError(
+                'Image size larger than 2MB'
+            )
+        if value.width > 4096:
+            raise serializers.ValidationError(
+                'Image width larger than 4096px'
+            )
+        if value.height > 4096:
+            raise serializers.ValidationError(
+                'Image height larger than 4096px'
+            )
+        return value
+
     def get_is_onwer(self, obj):
         request = self.context['request']
         return request.user == obj.owner
@@ -29,6 +44,7 @@ class PostSerializer(serializers.ModelSerializer):
             'title',
             'content',
             'image',
+            'image_filter',
 
 
 
