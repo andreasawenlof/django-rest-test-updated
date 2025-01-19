@@ -26,7 +26,7 @@ class PostSerializer(serializers.ModelSerializer):
             )
         return value
 
-    def get_is_onwer(self, obj):
+    def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 
@@ -36,7 +36,6 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'owner',
-            'is_owner',
             'profile_id',
             'profile_image',
             'created_at',
@@ -45,6 +44,7 @@ class PostSerializer(serializers.ModelSerializer):
             'content',
             'image',
             'image_filter',
+            'is_owner',
 
 
 

@@ -1,8 +1,8 @@
 """
 This module defines the Post model.
 """
-from django.contrib.auth.models import User
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Post(models.Model):
@@ -40,4 +40,4 @@ class Post(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f'{self.id} {self.title}'
+        return f'{self.pk} {self.title}'
