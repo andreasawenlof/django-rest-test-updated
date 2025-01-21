@@ -69,12 +69,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEVELOPER')
 
-ALLOWED_HOSTS = [
-    'localhost',
-    'http://127.0.0.1:8000/',
-    'https://django-rest-test-updated-api-bfda895e6ba0.herokuapp.com/',
-]
-
 
 # Application definition
 
@@ -118,6 +112,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+ALLOWED_HOSTS = [
+    'localhost',
+    'http://127.0.0.1:8000/',
+    'django-rest-test-updated-api-bfda895e6ba0.herokuapp.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
