@@ -52,7 +52,7 @@ REST_AUTH = {
     'JWT_AUTH_SAMESITE': None,
     'JWT_AUTH_HTTPONLY': True,
     # Secure cookies only in production
-    'JWT_AUTH_SECURE': False
+    'JWT_AUTH_SECURE': True
 }
 
 REST_AUTH_SERIALIZERS = {
