@@ -114,13 +114,13 @@ MIDDLEWARE = [
 
 ALLOWED_HOSTS = [
     'localhost',
-    'http://127.0.0.1:8000/',
+    '127.0.0.1',
     'django-rest-test-updated-api-bfda895e6ba0.herokuapp.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # Local React dev
-    'https://your-frontend-app.herokuapp.com',  # Deployed React app
+    'https://ci-moments-example-updated-de5b795d66b6.herokuapp.com',  # Deployed React app
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # Enable credentials for authentication cookies
@@ -203,3 +203,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Additional security settings for production
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
