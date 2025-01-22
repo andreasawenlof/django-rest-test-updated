@@ -51,8 +51,7 @@ REST_AUTH = {
     'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
     'JWT_AUTH_SAMESITE': None,
     'JWT_AUTH_HTTPONLY': True,
-    # Secure cookies only in production
-    'JWT_AUTH_SECURE': False
+    'JWT_AUTH_SECURE': True
 }
 
 REST_AUTH_SERIALIZERS = {
@@ -122,6 +121,11 @@ ALLOWED_HOSTS = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # Local React dev
     'https://ci-moments-example-updated-de5b795d66b6.herokuapp.com',  # Deployed React app
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://ci-moments-example-updated-de5b795d66b6.herokuapp.com',  # Deployed frontend
+    'https://localhost:3000',  # Local frontend over HTTPS
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # Enable credentials for authentication cookies
@@ -208,8 +212,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Additional security settings for production
 # if 'DEVELOPER' in os.environ:
 #     SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 #     SECURE_HSTS_SECONDS = 0
 #     SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 #     SECURE_HSTS_PRELOAD = False
