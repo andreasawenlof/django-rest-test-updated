@@ -51,7 +51,8 @@ REST_AUTH = {
     'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
     'JWT_AUTH_SAMESITE': None,
     'JWT_AUTH_HTTPONLY': True,
-    'JWT_AUTH_SECURE': True,
+    # Secure cookies only in production
+    'JWT_AUTH_SECURE': 'DEVELOPER' not in os.environ,
 }
 
 REST_AUTH_SERIALIZERS = {
@@ -205,11 +206,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Additional security settings for production
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_SECONDS = 31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+if 'DEVELOPER' in os.environ:
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    SECURE_HSTS_SECONDS = 0
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+    SECURE_HSTS_PRELOAD = False
