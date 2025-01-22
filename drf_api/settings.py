@@ -52,7 +52,7 @@ REST_AUTH = {
     'JWT_AUTH_SAMESITE': None,
     'JWT_AUTH_HTTPONLY': True,
     # Secure cookies only in production
-    'JWT_AUTH_SECURE': True
+    'JWT_AUTH_SECURE': False
 }
 
 REST_AUTH_SERIALIZERS = {
@@ -208,8 +208,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Additional security settings for production
 # if 'DEVELOPER' in os.environ:
 #     SECURE_SSL_REDIRECT = False
-#     SESSION_COOKIE_SECURE = False
-#     CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 #     SECURE_HSTS_SECONDS = 0
 #     SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 #     SECURE_HSTS_PRELOAD = False
