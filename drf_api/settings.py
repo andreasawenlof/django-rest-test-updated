@@ -52,6 +52,13 @@ REST_AUTH = {
     'JWT_AUTH_SECURE': True
 }
 
+CSRF_COOKIE_SAMESITE = None
+SESSION_COOKIE_SAMESITE = None
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_DOMAIN = ".herokuapp.com"  # or your custom domain
+CSRF_COOKIE_DOMAIN = ".herokuapp.com"
+
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'your_app.serializers.CurrentUserSerializer'
 }
