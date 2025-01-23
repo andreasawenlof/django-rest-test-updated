@@ -45,10 +45,10 @@ if 'DEVELOPER' not in os.environ:
 
 REST_AUTH = {
     'USE_JWT': True,
-    'JWT_AUTH_COOKIE': '_auth',
-    'JWT_AUTH_REFRESH_COOKIE': '_refresh',
+    'JWT_AUTH_COOKIE': 'my-app-auth',
+    'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
     'JWT_AUTH_SAMESITE': None,
-    'JWT_AUTH_HTTPONLY': True,
+    'JWT_AUTH_HTTPONLY': False,
     'JWT_AUTH_SECURE': True
 }
 
