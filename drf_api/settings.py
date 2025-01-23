@@ -125,7 +125,6 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://ci-moments-example-updated-de5b795d66b6.herokuapp.com',  # Deployed frontend
-    'https://localhost:3000',  # Local frontend over HTTPS
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # Enable credentials for authentication cookies
