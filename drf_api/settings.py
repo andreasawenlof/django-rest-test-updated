@@ -42,14 +42,16 @@ REST_FRAMEWORK = {
 if 'DEVELOPER' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
-    ],
+    ]
 
-USE_JWT = True
-JWT_AUTH_COOKIE = 'my-app-auth'
-JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
-JWT_AUTH_SAMESITE = 'None'
-JWT_AUTH_HTTPONLY = True
-JWT_AUTH_SECURE = True
+ST_AUTH = {
+    'USE_JWT': True,
+    'JWT_AUTH_COOKIE': 'my-app-auth',
+    'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
+    'JWT_AUTH_SAMESITE': 'None',
+    'JWT_AUTH_HTTPONLY': True,
+    'JWT_AUTH_SECURE': True,
+}
 
 
 CSRF_COOKIE_SAMESITE = 'None'  # Allow cookies to work across domains
