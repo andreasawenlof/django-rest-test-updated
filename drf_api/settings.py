@@ -30,9 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
-        'rest_framework.authentication.SessionAuthentication'
-        if 'DEVELOPER' in os.environ
-        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     )],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
@@ -47,10 +45,10 @@ if 'DEVELOPER' not in os.environ:
 
 REST_AUTH = {
     'USE_JWT': True,
-    'JWT_AUTH_COOKIE': 'my-app-auth',
-    'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
+    'JWT_AUTH_COOKIE': '_auth',
+    'JWT_AUTH_REFRESH_COOKIE': '_refresh',
     'JWT_AUTH_SAMESITE': None,
-    'JWT_AUTH_HTTPONLY': False,
+    'JWT_AUTH_HTTPONLY': True,
     'JWT_AUTH_SECURE': True
 }
 
@@ -119,17 +117,13 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    os.getenv('CLIENT_ORIGIN_DEVELOPER',
-              'http://localhost:3000'),  # Local React dev
-    os.getenv('CLIENT_ORIGIN',
-              'https://ci-moments-example-updated-de5b795d66b6.herokuapp.com')
+    os.getenv('CLIENT_ORIGIN_DEVELOPER'),  # Local React dev
+    os.getenv('CLIENT_ORIGIN')
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    os.getenv('CLIENT_ORIGIN_DEVELOPER',
-              'http://localhost:3000'),  # Local React dev
-    os.getenv('CLIENT_ORIGIN',
-              'https://ci-moments-example-updated-de5b795d66b6.herokuapp.com')
+    os.getenv('CLIENT_ORIGIN_DEVELOPER'),  # Local React dev
+    os.getenv('CLIENT_ORIGIN')
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # Enable credentials for authentication cookies
@@ -212,12 +206,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Additional security settings for production
-# if 'DEVELOPER' in os.environ:
-#     SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-#     SECURE_HSTS_SECONDS = 0
-#     SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-#     SECURE_HSTS_PRELOAD = False
