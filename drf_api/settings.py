@@ -119,12 +119,17 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # Local React dev
-    'https://ci-moments-example-updated-de5b795d66b6.herokuapp.com',  # Deployed React app
+    os.getenv('CLIENT_ORIGIN_DEVELOPER',
+              'http://localhost:3000'),  # Local React dev
+    os.getenv('CLIENT_ORIGIN',
+              'https://ci-moments-example-updated-de5b795d66b6.herokuapp.com')
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://ci-moments-example-updated-de5b795d66b6.herokuapp.com',  # Deployed frontend
+    os.getenv('CLIENT_ORIGIN_DEVELOPER',
+              'http://localhost:3000'),  # Local React dev
+    os.getenv('CLIENT_ORIGIN',
+              'https://ci-moments-example-updated-de5b795d66b6.herokuapp.com')
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # Enable credentials for authentication cookies
