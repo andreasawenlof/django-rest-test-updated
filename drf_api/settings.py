@@ -44,15 +44,14 @@ if 'DEVELOPER' not in os.environ:
         'rest_framework.renderers.JSONRenderer',
     ]
 
-ST_AUTH = {
+REST_AUTH = {
     'USE_JWT': True,
     'JWT_AUTH_COOKIE': 'my-app-auth',
     'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
     'JWT_AUTH_SAMESITE': 'None',
     'JWT_AUTH_HTTPONLY': True,
-    'JWT_AUTH_SECURE': True,
+    'JWT_AUTH_SECURE': True
 }
-
 
 CSRF_COOKIE_SAMESITE = 'None'  # Allow cookies to work across domains
 SESSION_COOKIE_SAMESITE = 'None'
@@ -122,7 +121,7 @@ MIDDLEWARE = [
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '... .herokuapp.com',
+    'django-rest-test-updated-api-bfda895e6ba0.herokuapp.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
