@@ -116,15 +116,16 @@ ALLOWED_HOSTS = [
     'django-rest-test-updated-api-bfda895e6ba0.herokuapp.com',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    os.getenv('CLIENT_ORIGIN_DEVELOPER'),  # Local React dev
-    os.getenv('CLIENT_ORIGIN')
-]
+# CORS_ALLOWED_ORIGINS = [
+#     os.getenv('CLIENT_ORIGIN_DEVELOPER'),  # Local React dev
+#     os.getenv('CLIENT_ORIGIN') ]
 
 CSRF_TRUSTED_ORIGINS = [
     os.getenv('CLIENT_ORIGIN_DEVELOPER'),  # Local React dev
     os.getenv('CLIENT_ORIGIN')
 ]
+
+CORS_ORIGIN_ALLOW_ALL = os.environ.get('CORS_ORIGIN_ALLOW_ALL') == 'True'
 
 CORS_ALLOW_CREDENTIALS = True  # Enable credentials for authentication cookies
 
