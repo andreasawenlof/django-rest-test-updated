@@ -61,7 +61,7 @@ SESSION_COOKIE_HTTPONLY = True  # Secure sessions
 CSRF_COOKIE_HTTPONLY = False  # Keep false if frontend needs CSRF token access
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'your_app.serializers.CurrentUserSerializer'
+    'USER_DETAILS_SERIALIZER': 'django-rest-test-updated-api-bfda895e6ba0.herokuapp.com.serializers.CurrentUserSerializer'
 }
 
 
