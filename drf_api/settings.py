@@ -31,6 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
@@ -48,16 +49,16 @@ REST_AUTH = {
     'JWT_AUTH_COOKIE': 'my-app-auth',
     'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
     'JWT_AUTH_SAMESITE': 'None',
-    'JWT_AUTH_HTTPONLY': False,
-    'JWT_AUTH_SECURE': False
+    'JWT_AUTH_HTTPONLY': True,
+    'JWT_AUTH_SECURE': True
 }
 
-CSRF_COOKIE_SAMESITE = None
+CSRF_COOKIE_SAMESITE = 'None'  # Allow cookies to work across domains
 SESSION_COOKIE_SAMESITE = 'None'
-CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SECURE = False
-SESSION_COOKIE_DOMAIN = ".herokuapp.com"  # or your custom domain
-CSRF_COOKIE_DOMAIN = ".herokuapp.com"
+CSRF_COOKIE_SECURE = True  # Enforces HTTPS for cookies on Heroku
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True  # Secure sessions
+CSRF_COOKIE_HTTPONLY = False  # Keep false if frontend needs CSRF token access
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'your_app.serializers.CurrentUserSerializer'
@@ -123,9 +124,9 @@ ALLOWED_HOSTS = [
     'django-rest-test-updated-api-bfda895e6ba0.herokuapp.com',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     os.getenv('CLIENT_ORIGIN_DEVELOPER'),  # Local React dev
-#     os.getenv('CLIENT_ORIGIN') ]
+CORS_ALLOWED_ORIGINS = [
+    os.getenv('CLIENT_ORIGIN_DEVELOPER'),  # Local React dev
+    os.getenv('CLIENT_ORIGIN')]
 
 CSRF_TRUSTED_ORIGINS = [
     os.getenv('CLIENT_ORIGIN_DEVELOPER'),  # Local React dev
