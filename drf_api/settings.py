@@ -49,13 +49,13 @@ REST_AUTH = {
     'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
     'JWT_AUTH_SAMESITE': None,
     'JWT_AUTH_HTTPONLY': False,
-    'JWT_AUTH_SECURE': True
+    'JWT_AUTH_SECURE': False
 }
 
 CSRF_COOKIE_SAMESITE = None
 SESSION_COOKIE_SAMESITE = None
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_DOMAIN = ".herokuapp.com"  # or your custom domain
 CSRF_COOKIE_DOMAIN = ".herokuapp.com"
 
