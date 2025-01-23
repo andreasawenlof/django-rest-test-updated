@@ -122,7 +122,7 @@ MIDDLEWARE = [
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'django-rest-test-updated-api-bfda895e6ba0.herokuapp.com',
+    '... .herokuapp.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
